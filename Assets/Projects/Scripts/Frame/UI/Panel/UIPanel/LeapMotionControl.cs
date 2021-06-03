@@ -53,7 +53,10 @@ public class LeapMotionControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(Config.Instance)
+        {
+            deltaVelocity = Config.Instance.configData.deltaVelocity;
+        }
     }
 
     // Update is called once per frame

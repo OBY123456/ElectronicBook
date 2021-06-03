@@ -11,9 +11,14 @@ public class ConfigData
     public int Backtime;
 
     /// <summary>
-    /// UDP端口号
+    /// 最大页码
     /// </summary>
-    public int Port;
+    public int MaxPage;
+
+    /// <summary>
+    /// 挥手的灵敏度，目前测试0.42最好
+    /// </summary>
+    public float deltaVelocity;
 }
 
 
@@ -54,12 +59,6 @@ public class Config : MonoBehaviour
             }
         }
 #endif
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        LogMsg.Instance.Log("Time==" + configData.Backtime + "     " + "Port==" + configData.Port);
     }
 
     private void OnDestroy()

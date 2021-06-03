@@ -27,7 +27,7 @@ public class UDPReceive : MonoBehaviour
     //初始化
     private void Init()
     {
-        ipEndPoint = new IPEndPoint(IPAddress.Any,int.Parse(Config.Instance.configData.Port.ToString()));    //端口号要与发送端一致
+        ipEndPoint = new IPEndPoint(IPAddress.Any,int.Parse("8000"/*Config.Instance.configData.Port.ToString())*/));    //端口号要与发送端一致
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         socket.Bind(ipEndPoint);
         thread = new Thread(new ThreadStart(Receive));      //开启一个线程，接收发送端的消息

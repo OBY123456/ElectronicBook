@@ -1,1 +1,1 @@
-{"Backtime":30,"Port":8060}
+{"Backtime":30,"MaxPage":176,"deltaVelocity":0.42}

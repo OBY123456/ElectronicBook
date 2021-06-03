@@ -17,6 +17,26 @@ public class BookPanel : BasePanel
 
     public GameObject PageFront,PageBack;
 
+    public int MaxPage = 176;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        if (Config.Instance)
+        {
+            MaxPage = Config.Instance.configData.MaxPage;
+        }
+
+        for (int i = 0; i < MaxPage; i++)
+        {
+            if (i / 2 > _bookPro.papers.Count)
+            {
+                AddPaper(i);
+            }
+        }
+    }
+
     public override void InitFind()
     {
         base.InitFind();
