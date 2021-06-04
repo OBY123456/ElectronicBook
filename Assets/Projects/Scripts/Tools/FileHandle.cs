@@ -77,7 +77,7 @@ public class FileHandle
         File.Delete(filepath);
     }
 
-    public Sprite LoadByIO(string path)
+    public Texture2D LoadByIO(string path)
     {
         //创建文件读取流
         FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
@@ -91,11 +91,12 @@ public class FileHandle
         fileStream.Dispose();
         fileStream = null;
         //创建Texture
-        int width = 960;
-        int height = 1200;
-        Texture2D texture2D = new Texture2D(width, height);
+        //int width = 960;
+        //int height = 1200;
+        Texture2D texture2D = new Texture2D(0, 0);
         texture2D.LoadImage(bytes);
-        return Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero);
+        texture2D.Apply();
+        return texture2D;
     }
 
     public List<string> GetImagePath(string TexturePath)

@@ -13,7 +13,7 @@ public class BookPanel : BasePanel
 
     public BookPro _bookPro;
 
-    private Sprite[] sprites;
+    private Texture2D[] sprites;
 
     public GameObject PageFront,PageBack;
 
@@ -107,15 +107,15 @@ public class BookPanel : BasePanel
     /// 设置页面显示
     /// </summary>
     /// <param name="img">当前页面的图片</param>
-    private void SetPaper(Sprite[] img, int currentpage)
+    private void SetPaper(Texture2D[] img, int currentpage)
     {
         if (currentpage % 2 == 0)
         {
-            _bookPro.papers[currentpage / 2].Front.GetComponent<Image>().sprite = img[currentpage - 1];
+            _bookPro.papers[currentpage / 2].Front.GetComponent<RawImage>().texture = img[currentpage - 1];
         }
         else if (currentpage % 2 == 1)
         {
-            _bookPro.papers[currentpage / 2].Back.GetComponent<Image>().sprite = img[currentpage - 1];
+            _bookPro.papers[currentpage / 2].Back.GetComponent<RawImage>().texture = img[currentpage - 1];
         }
     }
 
@@ -123,11 +123,11 @@ public class BookPanel : BasePanel
     {
         if (currentpage % 2 == 0)
         {
-            _bookPro.papers[currentpage / 2].Front.GetComponent<Image>().sprite = null;
+            _bookPro.papers[currentpage / 2].Front.GetComponent<RawImage>().texture = null;
         }
         else if (currentpage % 2 == 1)
         {
-            _bookPro.papers[currentpage / 2].Back.GetComponent<Image>().sprite = null;
+            _bookPro.papers[currentpage / 2].Back.GetComponent<RawImage>().texture = null;
         }
     }
 

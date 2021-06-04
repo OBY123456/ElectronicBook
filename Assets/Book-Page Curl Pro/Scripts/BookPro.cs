@@ -76,8 +76,8 @@ public class BookPro : MonoBehaviour
         }
     }
 
-    Image Left;
-    Image Right;
+    RawImage Left;
+    RawImage Right;
 
     //current flip mode
     FlipMode mode;
@@ -300,13 +300,13 @@ public class BookPro : MonoBehaviour
 
         UpdatePages();
 
-        Left = papers[currentPaper - 1].Front.GetComponent<Image>();
+        Left = papers[currentPaper - 1].Front.GetComponent<RawImage>();
         BookUtility.ShowPage(Left.gameObject);
         Left.rectTransform.pivot = new Vector2(0, 0);
         Left.transform.position = RightPageTransform.transform.position;
         Left.transform.localEulerAngles = new Vector3(0, 0, 0);
 
-        Right = papers[currentPaper - 1].Back.GetComponent<Image>();
+        Right = papers[currentPaper - 1].Back.GetComponent<RawImage>();
         BookUtility.ShowPage(Right.gameObject);
         Right.transform.position = RightPageTransform.transform.position;
         Right.transform.localEulerAngles = new Vector3(0, 0, 0);
@@ -336,13 +336,13 @@ public class BookPro : MonoBehaviour
 
         ClippingPlane.rectTransform.pivot = new Vector2(0, 0.35f);
 
-        Right = papers[currentPaper - 1].Back.GetComponent<Image>();
+        Right = papers[currentPaper - 1].Back.GetComponent<RawImage>();
         BookUtility.ShowPage(Right.gameObject);
         Right.transform.position = LeftPageTransform.transform.position;
         Right.transform.localEulerAngles = new Vector3(0, 0, 0);
         Right.transform.SetAsFirstSibling();
 
-        Left = papers[currentPaper - 1].Front.GetComponent<Image>();
+        Left = papers[currentPaper - 1].Front.GetComponent<RawImage>();
         BookUtility.ShowPage(Left.gameObject);
         Left.gameObject.SetActive(true);
         Left.rectTransform.pivot = new Vector2(1, 0);

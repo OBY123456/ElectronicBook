@@ -9,35 +9,35 @@ public class PageFile : MonoBehaviour
     /// <summary>
     /// 上善篇
     /// </summary>
-    public List<Sprite> ShangShanP = new List<Sprite>();
+    public List<Texture2D> ShangShanP = new List<Texture2D>();
     private List<string> ShangShanImagePath = new List<string>();
     private string ShangShanPath = "/电子书切图/上善篇";
 
     /// <summary>
     /// 大爱篇
     /// </summary>
-    public List<Sprite> DaAiP = new List<Sprite>();
+    public List<Texture2D> DaAiP = new List<Texture2D>();
     private List<string> DaAiImagePath = new List<string>();
     private string DaAiPath = "/电子书切图/大爱篇";
 
     /// <summary>
     /// 慈怀篇
     /// </summary>
-    public List<Sprite> CiHuaiP = new List<Sprite>();
+    public List<Texture2D> CiHuaiP = new List<Texture2D>();
     private List<string> CiHuaiImagePath = new List<string>();
     private string CiHuaiPath = "/电子书切图/慈怀篇";
 
     /// <summary>
     /// 仁济篇
     /// </summary>
-    public List<Sprite> RenJiP = new List<Sprite>();
+    public List<Texture2D> RenJiP = new List<Texture2D>();
     private List<string> RenJiImagePath = new List<string>();
     private string RenJiPath = "/电子书切图/仁济篇";
 
     /// <summary>
     /// 桥捐篇
     /// </summary>
-    public List<Sprite> QiaoJuanP = new List<Sprite>();
+    public List<Texture2D> QiaoJuanP = new List<Texture2D>();
     private List<string> QiaoJuanImagePath = new List<string>();
     private string QiaoJuanPath = "/电子书切图/侨捐录";
 
@@ -76,7 +76,7 @@ public class PageFile : MonoBehaviour
                 }
                 for (int i = 0; i < ShangShanImagePath.Count; i++)
                 {
-                    Sprite sprite = FileHandle.Instance.LoadByIO(ShangShanImagePath[i]);
+                    Texture2D sprite = FileHandle.Instance.LoadByIO(ShangShanImagePath[i]);
                     ShangShanP.Add(sprite);
                 }
                 break;
@@ -88,7 +88,7 @@ public class PageFile : MonoBehaviour
                 }
                 for (int i = 0; i < DaAiImagePath.Count; i++)
                 {
-                    Sprite sprite = FileHandle.Instance.LoadByIO(DaAiImagePath[i]);
+                    Texture2D sprite = FileHandle.Instance.LoadByIO(DaAiImagePath[i]);
                     DaAiP.Add(sprite);
                 }
                 break;
@@ -100,7 +100,7 @@ public class PageFile : MonoBehaviour
                 }
                 for (int i = 0; i < CiHuaiImagePath.Count; i++)
                 {
-                    Sprite sprite = FileHandle.Instance.LoadByIO(CiHuaiImagePath[i]);
+                    Texture2D sprite = FileHandle.Instance.LoadByIO(CiHuaiImagePath[i]);
                     CiHuaiP.Add(sprite);
                 }
                 break;
@@ -112,7 +112,7 @@ public class PageFile : MonoBehaviour
                 }
                 for (int i = 0; i < RenJiImagePath.Count; i++)
                 {
-                    Sprite sprite = FileHandle.Instance.LoadByIO(RenJiImagePath[i]);
+                    Texture2D sprite = FileHandle.Instance.LoadByIO(RenJiImagePath[i]);
                     RenJiP.Add(sprite);
                 }
                 break;
@@ -124,7 +124,7 @@ public class PageFile : MonoBehaviour
                 }
                 for (int i = 0; i < QiaoJuanImagePath.Count; i++)
                 {
-                    Sprite sprite = FileHandle.Instance.LoadByIO(QiaoJuanImagePath[i]);
+                    Texture2D sprite = FileHandle.Instance.LoadByIO(QiaoJuanImagePath[i]);
                     QiaoJuanP.Add(sprite);
                 }
                 break;
