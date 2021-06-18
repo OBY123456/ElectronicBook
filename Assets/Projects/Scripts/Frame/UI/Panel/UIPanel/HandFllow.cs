@@ -10,7 +10,7 @@ using Image = UnityEngine.UI.Image;
 public class HandFllow : MonoBehaviour
 {
     public float Times = 2.0f;
-    private bool IsComplete = true;
+    public bool IsComplete;
 
     private LeapProvider provider;
     private HandModelBase leftHandModel;
@@ -30,6 +30,11 @@ public class HandFllow : MonoBehaviour
         rightHandModel = LeapMotionControl.Instance.rightHandModel;
         image = transform.GetChild(0).GetComponent<Image>();
         hand = transform.GetComponent<Image>();
+
+        if(Config.Instance)
+        {
+            num = Config.Instance.configData.MoveVelocity;
+        }
     }
 
     // Update is called once per frame
@@ -38,20 +43,20 @@ public class HandFllow : MonoBehaviour
         if (rightHandModel.IsTracked)
         {
             FllowHandImage();
-            if(LeapMotionControl.Instance.Hand_Right_IsCloseHand)
-            {
-                if(hand.sprite.name.Contains("手掌"))
-                {
-                    hand.sprite = Hands[1];
-                }
-            }
-            else
-            {
-                if (hand.sprite.name.Contains("握拳"))
-                {
-                    hand.sprite = Hands[0];
-                }
-            }
+            //if(LeapMotionControl.Instance.Hand_Right_IsCloseHand)
+            //{
+            //    if(hand.sprite.name.Contains("手掌"))
+            //    {
+            //        hand.sprite = Hands[1];
+            //    }
+            //}
+            //else
+            //{
+            //    if (hand.sprite.name.Contains("握拳"))
+            //    {
+            //        hand.sprite = Hands[0];
+            //    }
+            //}
         }
         else
         {
@@ -63,6 +68,9 @@ public class HandFllow : MonoBehaviour
         }
     }
 
+    private Vector3 vector;
+    float num = 1;
+
     private void FllowHandImage()
     {
         Frame frame = provider.CurrentFrame;
@@ -70,7 +78,8 @@ public class HandFllow : MonoBehaviour
         {
             if (hand.IsRight)
             {
-                transform.position = Camera.main.WorldToScreenPoint(new Vector3(hand.PalmPosition.x, hand.PalmPosition.y, hand.PalmPosition.z));
+                vector = Camera.main.WorldToScreenPoint(new Vector3(hand.PalmPosition.x, hand.PalmPosition.y, hand.PalmPosition.z));
+                transform.position = vector * num;
             }
         }
 
@@ -82,9 +91,11 @@ public class HandFllow : MonoBehaviour
         if (collision.GetComponent<baseOnClick>())
         {
             tweener.Kill();
+            //transform.DOKill();
             collision.GetComponent<baseOnClick>().TriggerEnter();
             image.fillAmount = 1;
             IsComplete = false;
+            //Debug.Log(collision.gameObject.name);
         }
     }
 
@@ -95,34 +106,38 @@ public class HandFllow : MonoBehaviour
             
             if(!IsComplete)
             {
-                tweener = image.DOFillAmount(0, Times);
+                tweener = image.DOFillAmount(0, Times).OnComplete(() => {
+                                  collision.GetComponent<baseOnClick>().TriggerStay();
+                                  //IsComplete = true;
+                              }).SetEase(Ease.Linear);
                 IsComplete = true;
             }
 
-            if (LeapMotionControl.Instance.Hand_Right_IsCloseHand)
-            {
-                if (!tweener.IsPlaying())
-                {
-                    tweener.Play();
-                }
+            //if (LeapMotionControl.Instance.Hand_Right_IsCloseHand)
+            //{
+            //    if (!tweener.IsPlaying())
+            //    {
+            //        tweener.Play();
+            //    }
 
-            }
-            else
-            {
-                if (tweener.IsPlaying())
-                {
-                    tweener.Pause();
-                }
-            }
-            tweener.OnComplete(() =>
-            {
-                LogMsg.Instance.Log("Hand_Right_IsCloseHand==" + LeapMotionControl.Instance.Hand_Right_IsCloseHand);
-                if (LeapMotionControl.Instance.Hand_Right_IsCloseHand)
-                {
-                    collision.GetComponent<baseOnClick>().TriggerStay();
-                }
-                   
-            }).SetEase(Ease.Linear);
+            //}
+            //else
+            //{
+            //    if (tweener.IsPlaying())
+            //    {
+            //        tweener.Pause();
+            //    }
+            //}
+            //tweener.OnComplete(() =>
+            //{
+            //    //LogMsg.Instance.Log("Hand_Right_IsCloseHand==" + LeapMotionControl.Instance.Hand_Right_IsCloseHand);
+            //    //if (LeapMotionControl.Instance.Hand_Right_IsCloseHand)
+            //    //{
+            //    //    collision.GetComponent<baseOnClick>().TriggerStay();
+            //    //}
+            //    collision.GetComponent<baseOnClick>().TriggerStay();
+            //    IsComplete = true;
+            //}).SetEase(Ease.Linear);
         }
     }
 
@@ -133,6 +148,7 @@ public class HandFllow : MonoBehaviour
             collision.GetComponent<baseOnClick>().TriggerExit();
             tweener.Kill();
             image.fillAmount = 0;
+            IsComplete = false;
         }
     }
 }

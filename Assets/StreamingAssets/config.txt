@@ -1,1 +1,1 @@
-{"Backtime":180,"MaxPage":176,"deltaVelocity":0.42}
+{"Backtime":180,"MaxPage":176,"deltaVelocity":0.42,"MoveVelocity":1.0}

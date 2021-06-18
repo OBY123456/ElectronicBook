@@ -19,6 +19,8 @@ public class ConfigData
     /// 挥手的灵敏度，目前测试0.42最好
     /// </summary>
     public float deltaVelocity;
+
+    public float MoveVelocity;
 }
 
 

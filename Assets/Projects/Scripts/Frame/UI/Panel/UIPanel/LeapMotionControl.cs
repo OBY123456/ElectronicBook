@@ -32,11 +32,11 @@ public class LeapMotionControl : MonoBehaviour
     [HideInInspector]
     public bool Hand_Right_IsMoveRight;
 
-    /// <summary>
-    /// 右手，是否握拳
-    /// </summary>
-    [HideInInspector]
-    public bool Hand_Right_IsCloseHand;
+    ///// <summary>
+    ///// 右手，是否握拳
+    ///// </summary>
+    //[HideInInspector]
+    //public bool Hand_Right_IsCloseHand;
 
     /// <summary>
     /// 右手，是否检测到
@@ -65,7 +65,7 @@ public class LeapMotionControl : MonoBehaviour
         if(rightHandModel.IsTracked)
         {
             RightHandMove();
-            RightHandCloseHand();
+            //RightHandCloseHand();
             Hand_Right_IsTracked = true;
         }
         else
@@ -107,26 +107,26 @@ public class LeapMotionControl : MonoBehaviour
         }
     }
 
-    private void RightHandCloseHand()
-    {
-        Frame frame = provider.CurrentFrame;
-        foreach (Hand hand in frame.Hands)
-        {
-            if (hand.IsRight)
-            {
-                if(IsCloseHand(hand))
-                {
-                    LogMsg.Instance.Log("右手握拳");
-                    Hand_Right_IsCloseHand = true;
-                }
-                else
-                {
-                    LogMsg.Instance.Log("右手没握拳");
-                    Hand_Right_IsCloseHand = false;
-                }
-            }
-        }
-    }
+    //private void RightHandCloseHand()
+    //{
+    //    Frame frame = provider.CurrentFrame;
+    //    foreach (Hand hand in frame.Hands)
+    //    {
+    //        if (hand.IsRight)
+    //        {
+    //            if(IsCloseHand(hand))
+    //            {
+    //                LogMsg.Instance.Log("右手握拳");
+    //                Hand_Right_IsCloseHand = true;
+    //            }
+    //            else
+    //            {
+    //                LogMsg.Instance.Log("右手没握拳");
+    //                Hand_Right_IsCloseHand = false;
+    //            }
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// 手划向右边
