@@ -78,6 +78,7 @@ public class HandFllow : MonoBehaviour
         {
             if (hand.IsRight)
             {
+                //手的刚体一定要锁住Z轴，不然会出Bug，手没触碰到按钮的触发器也能触发
                 vector = Camera.main.WorldToScreenPoint(new Vector3(hand.PalmPosition.x, hand.PalmPosition.y, hand.PalmPosition.z));
                 transform.position = vector * num;
             }

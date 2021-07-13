@@ -21,6 +21,8 @@ public class ConfigData
     public float deltaVelocity;
 
     public float MoveVelocity;
+
+    public string Logo;
 }
 
 

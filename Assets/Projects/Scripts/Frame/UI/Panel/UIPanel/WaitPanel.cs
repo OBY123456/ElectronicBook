@@ -5,14 +5,11 @@ using MTFrame;
 using UnityEngine.UI;
 using MTFrame.MTEvent;
 using System;
-using RenderHeads.Media.AVProVideo;
 using Leap.Unity;
 using DG.Tweening;
 
 public class WaitPanel : BasePanel
 {
-    //public MediaPlayer mediaPlayer;
-
     private float BackTime;
     private float Back_Time;
     private bool IsBack;
@@ -22,7 +19,6 @@ public class WaitPanel : BasePanel
     protected override void Start()
     {
         base.Start();
-        //Reset();
 
         if(LeapMotionControl.Instance)
         {
@@ -33,54 +29,6 @@ public class WaitPanel : BasePanel
         if (Config.Instance)
         BackTime = Config.Instance.configData.Backtime;
     }
-
-    public override void InitFind()
-    {
-        base.InitFind();
-       // mediaPlayer = FindTool.FindChildComponent<MediaPlayer>(transform, "Video");
-    }
-
-    public override void InitEvent()
-    {
-        base.InitEvent();
-        //mediaPlayer.Events.AddListener(Complete);
-    }
-
-    private void Complete(MediaPlayer arg0, MediaPlayerEvent.EventType arg1, ErrorCode arg2)
-    {
-        switch (arg1)
-        {
-            case MediaPlayerEvent.EventType.FinishedPlaying:
-                arg0.Stop();
-                UIState.SwitchPanel(PanelName.DirectoryPanel);
-                break;
-            default:
-                break;
-        }
-    }
-
-    public override void Open()
-    {
-        base.Open();
-        //IsPlay = false;
-    }
-
-    public override void Hide()
-    {
-        base.Hide();
-        //Reset();
-    }
-
-    //private bool IsPlay;
-    //private void VideoPlay()
-    //{
-    //    if(!IsPlay)
-    //    {
-    //        IsPlay = true;
-    //        mediaPlayer.gameObject.GetComponent<CanvasGroup>().DOFade(1,0.5f);
-    //        mediaPlayer.OpenVideoFromFile(MediaPlayer.FileLocation.RelativeToStreamingAssetsFolder, "AVProVideoSamples/BigBuckBunny_720p30.mp4");
-    //    }
-    //}
 
     private void Update()
     {
@@ -110,9 +58,4 @@ public class WaitPanel : BasePanel
             }
         }
     }
-
-    //private void Reset()
-    //{
-    //    mediaPlayer.gameObject.GetComponent<CanvasGroup>().alpha = 0;
-    //}
 }
