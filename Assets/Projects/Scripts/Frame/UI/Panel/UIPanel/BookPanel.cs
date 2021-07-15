@@ -35,6 +35,7 @@ public class BookPanel : BasePanel
                 AddPaper(i);
             }
         }
+       
     }
 
     public override void InitFind()
@@ -43,6 +44,7 @@ public class BookPanel : BasePanel
         BackButton = FindTool.FindChildComponent<LeapButton>(transform, "backButton");
         autoFlip = FindTool.FindChildComponent<AutoFlip>(transform, "BookPro");
         _bookPro = FindTool.FindChildComponent<BookPro>(transform, "BookPro");
+        
     }
 
     public override void InitEvent()

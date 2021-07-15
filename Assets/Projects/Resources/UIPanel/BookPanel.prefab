@@ -9447,6 +9447,7 @@ MonoBehaviour:
   PageBack: {fileID: 6811820239747555514, guid: b4175600d922f2d45b18ddaf45fc3623,
     type: 3}
   MaxPage: 176
+  Mask: {fileID: 0}
 --- !u!225 &5266047114683673425
 CanvasGroup:
   m_ObjectHideFlags: 0
