@@ -41,6 +41,13 @@ public class PageFile : MonoBehaviour
     private List<string> QiaoJuanImagePath = new List<string>();
     private string QiaoJuanPath = "/电子书切图/侨捐录";
 
+    /// <summary>
+    /// 特别篇
+    /// </summary>
+    public List<Texture2D> TeBieP = new List<Texture2D>();
+    private List<string> TeBieImagePath = new List<string>();
+    private string TeBiePath = "/电子书切图/特别篇";
+
     private void Awake()
     {
         Instance = this;
@@ -49,19 +56,19 @@ public class PageFile : MonoBehaviour
         InitBook(DirectoryName.大爱篇);
         InitBook(DirectoryName.慈怀篇);
         InitBook(DirectoryName.仁济篇);
-        InitBook(DirectoryName.侨捐录);
+        InitBook(DirectoryName.侨捐录);   
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(Config.Instance)
+        {
+            if(Config.Instance.configData.是否开启特别篇)
+            {
+                InitBook(DirectoryName.特别篇);
+            }
+        }
     }
 
     private void InitBook(DirectoryName name)
@@ -128,6 +135,18 @@ public class PageFile : MonoBehaviour
                     QiaoJuanP.Add(sprite);
                 }
                 break;
+            case DirectoryName.特别篇:
+                if (TeBieImagePath == null || TeBieImagePath.Count <= 0)
+                {
+                    InitBookList(DirectoryName.特别篇);
+
+                }
+                for (int i = 0; i < TeBieImagePath.Count; i++)
+                {
+                    Texture2D sprite = FileHandle.Instance.LoadByIO(TeBieImagePath[i]);
+                    TeBieP.Add(sprite);
+                }
+                break;
             case DirectoryName.无:
                 break;
             default:
@@ -153,6 +172,9 @@ public class PageFile : MonoBehaviour
                 break;
             case DirectoryName.侨捐录:
                 QiaoJuanImagePath = FileHandle.Instance.GetImagePath(Application.streamingAssetsPath + QiaoJuanPath);
+                break;
+            case DirectoryName.特别篇:
+                TeBieImagePath = FileHandle.Instance.GetImagePath(Application.streamingAssetsPath + TeBiePath);
                 break;
             case DirectoryName.无:
                 break;

@@ -17,12 +17,12 @@ public class BookPanel : BasePanel
 
     public GameObject PageFront,PageBack;
 
+    //书页最大上限，超过这个上限的话需要在配置文件里面改
     public int MaxPage = 176;
 
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
-
+        base.Start();
         if (Config.Instance)
         {
             MaxPage = Config.Instance.configData.MaxPage;
@@ -35,7 +35,6 @@ public class BookPanel : BasePanel
                 AddPaper(i);
             }
         }
-       
     }
 
     public override void InitFind()
@@ -203,6 +202,13 @@ public class BookPanel : BasePanel
                 if (PageFile.Instance != null && PageFile.Instance.QiaoJuanP.Count > 0)
                 {
                     sprites = PageFile.Instance.QiaoJuanP.ToArray();
+                }
+                break;
+            case DirectoryName.特别篇:
+
+                if (PageFile.Instance != null && PageFile.Instance.TeBieP.Count > 0)
+                {
+                    sprites = PageFile.Instance.TeBieP.ToArray();
                 }
                 break;
             case DirectoryName.无:

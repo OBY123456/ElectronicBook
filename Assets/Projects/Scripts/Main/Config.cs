@@ -23,6 +23,8 @@ public class ConfigData
     public float MoveVelocity;
 
     public string Logo;
+
+    public bool 是否开启特别篇;
 }
 
 

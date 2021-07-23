@@ -1,1 +1,1 @@
-{"Backtime":600,"MaxPage":176,"deltaVelocity":0.42,"MoveVelocity":1.0,"Logo":""}
+{"Backtime":600,"MaxPage":176,"deltaVelocity":0.42,"MoveVelocity":1.0,"Logo":"123","是否开启特别篇":false}
